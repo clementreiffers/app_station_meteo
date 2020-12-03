@@ -40,13 +40,21 @@ void setup()
 
 void loop() // fonction principale
 {
-
+  /*
+    Serial.println(lire_masse());
+    afficher_nombre(lire_temp());
+  */
+  //digits(1,9);
+  Serial.println(lire_temp());
   afficher_nombre(lire_temp());
+}
 
+int lire_masse() {
+  return (int)analogRead(A1) * 10;
 }
 
 int lire_temp() {
-  return (int) (analogRead(A0)*( 5.0 / 1023.0 * 100.0) * 10);
+  return (int) (analogRead(A0) * ( 5.0 / 1023.0 * 100.0) * 10);
 }
 
 // fonction permettant d'afficher un nombre sur deux afficheurs
@@ -88,6 +96,12 @@ void afficher(char nbr)
   digitalWrite(pos2, LOW);
   digitalWrite(pos4, LOW);
   digitalWrite(pos8, LOW);
+  if (nbr == 0) {
+    digitalWrite(pos1, HIGH);
+    digitalWrite(pos2, HIGH); 
+    digitalWrite(pos4, HIGH); 
+    digitalWrite(pos8, HIGH);
+  }
 
   if (nbr == 1) {
     digitalWrite(pos1, HIGH);
