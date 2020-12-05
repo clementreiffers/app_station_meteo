@@ -40,17 +40,17 @@ void setup()
 
 void loop() // fonction principale
 {
-  /*
-    Serial.println(lire_masse());
-    afficher_nombre(lire_temp());
-  */
-  //digits(1,9);
-  Serial.println(lire_temp());
+  
+  Serial.println(lire_masse());
   afficher_nombre(lire_temp());
+  //delay(1000);
+  //digits(1,9);
+  //Serial.println(lire_temp());
+  //afficher_nombre(000);
 }
 
 int lire_masse() {
-  return (int)analogRead(A1) * 10;
+  return (int)analogRead(A1);
 }
 
 int lire_temp() {
@@ -74,93 +74,21 @@ void afficher_nombre(int nombre)
 
   // tant qu'on a pas affiché ce chiffre pendant au moins 500 millisecondes
   // permet donc de pouvoir lire le nombre affiché
+  int freq = 5;
   while ((millis() - temps) < 1000)
   {
     digits(dizaine, 8);
-    delay(1);
+    delay(freq);
     digits(unite, 9);
-    delay(1);
+    delay(freq);
     digits(dizieme, 10);
-    delay(1);
-
-
+    delay(freq);
+   
   }
 
 }
 // fonction écrivant sur un seul afficheur
 // on utilise le même principe que vu plus haut
-
-void afficher(char nbr)
-{
-  digitalWrite(pos1, LOW);
-  digitalWrite(pos2, LOW);
-  digitalWrite(pos4, LOW);
-  digitalWrite(pos8, LOW);
-  if (nbr == 0) {
-    digitalWrite(pos1, HIGH);
-    digitalWrite(pos2, HIGH); 
-    digitalWrite(pos4, HIGH); 
-    digitalWrite(pos8, HIGH);
-  }
-
-  if (nbr == 1) {
-    digitalWrite(pos1, HIGH);
-    digitalWrite(pos2, LOW);
-    digitalWrite(pos4, LOW);
-    digitalWrite(pos8, LOW);
-  }
-  if (nbr == 2) {
-    digitalWrite(pos1, LOW);
-    digitalWrite(pos2, HIGH);
-    digitalWrite(pos4, LOW);
-    digitalWrite(pos8, LOW);
-  }
-  if (nbr == 3) {
-    digitalWrite(pos1, HIGH);
-    digitalWrite(pos2, HIGH);
-    digitalWrite(pos4, LOW);
-    digitalWrite(pos8, LOW);
-  }
-  if (nbr == 4) {
-    digitalWrite(pos4, HIGH);
-    digitalWrite(pos1, LOW);
-    digitalWrite(pos2, LOW);
-    digitalWrite(pos8, LOW);
-
-  }
-  if (nbr == 5) {
-    digitalWrite(pos4, HIGH);
-    digitalWrite(pos1, HIGH);
-    digitalWrite(pos2, LOW);
-    digitalWrite(pos8, LOW);
-  }
-  if (nbr == 6) {
-    digitalWrite(pos2, HIGH);
-    digitalWrite(pos4, HIGH);
-    digitalWrite(pos1, LOW);
-    digitalWrite(pos8, LOW);
-
-  }
-  if (nbr == 7) {
-    digitalWrite(pos1, HIGH);
-    digitalWrite(pos2, HIGH);
-    digitalWrite(pos4, HIGH);
-    digitalWrite(pos8, LOW);
-
-  }
-  if (nbr == 8) {
-    digitalWrite(pos1, LOW);
-    digitalWrite(pos2, LOW);
-    digitalWrite(pos4, LOW);
-    digitalWrite(pos8, HIGH);
-  }
-  if (nbr == 9) {
-    digitalWrite(pos2, LOW);
-    digitalWrite(pos4, LOW);
-    digitalWrite(pos1, HIGH);
-    digitalWrite(pos8, HIGH);
-  }
-}
 
 
 void digits(float nbr, int pos) {
@@ -172,6 +100,14 @@ void digits(float nbr, int pos) {
   digitalWrite(8, LOW);
   digitalWrite(9, LOW);
   digitalWrite(10, LOW);
+
+  if (nbr == 0) {
+    digitalWrite(pos1, LOW);
+    digitalWrite(pos2, LOW);
+    digitalWrite(pos4, LOW);
+    digitalWrite(pos8, LOW);
+    digitalWrite(pos, HIGH);
+  }
   if (nbr == 1) {
     digitalWrite(pos, HIGH);
     digitalWrite(pos1, HIGH);
