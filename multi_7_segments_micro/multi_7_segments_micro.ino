@@ -43,6 +43,8 @@ void digits(int nbr, int pos) {
   nbr == 8 ? PORTD |= B00010000 : false;
   nbr == 9 ? PORTD |= B00010100 : false;
 }
+//int a = 000;
 void loop() {
   afficher(123);
+
 }
