@@ -10,6 +10,7 @@ dans le code complet
 
 ## le branchement 
 
-pin 2 à 5 : pour afficher les chiffres sur les digits
-pin A0 : on recupere la temperature 
-pin A1 : on recupere la masse
+-   pin 2 à 5 : pour afficher les chiffres sur les digits
+-   pin A0 : on recupere la temperature 
+-   pin A1 : on recupere la masse
+-   tous les composants sont alimentés en 5V
