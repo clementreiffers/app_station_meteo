@@ -18,7 +18,7 @@ int analogReadNew(uint8_t pin)
   while ((_SFR_BYTE(ADCSRA) & _BV(ADSC))); 
   low  = ADCL;
   high = ADCH;
-  // combine the two bytes
+  // on combine les deux bits
   return (high << 8) | low;// on retourne la valeur
 }
 
@@ -84,7 +84,6 @@ void setup() {
   // on initialise tout le monde a low
   PORTD &= B00000000;
   PORTB &= B00000000;
-
 }
 
 // on initialise nos variable de temperature et de masse pour pouvoir les utiliser dans la loop
@@ -98,7 +97,7 @@ void loop() {
   masse = analogReadNew(A1);
   masse = masse * 780 / 1023;
 
-  // ========================== on affiche les nombres qu'on vient de recuperer ===================================
+  // on affiche les nombres qu'on vient de recuperer 
   
   float temps = millis(); // on récupère le temps courant
   // tant qu'on a pas affiché ce chiffre pendant au moins 500 millisecondes
